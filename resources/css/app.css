@@ -1,0 +1,702 @@
+@import url('https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@300;400;500;600;700&display=swap');
+
+/* カスタムCSS */
+
+/* 全体のベーススタイリング */
+:root {
+    --primary-gradient: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+    --success-gradient: linear-gradient(135deg, #4facfe 0%, #00f2fe 100%);
+    --warning-gradient: linear-gradient(135deg, #43e97b 0%, #38f9d7 100%);
+    --danger-gradient: linear-gradient(135deg, #fa709a 0%, #fee140 100%);
+    --info-gradient: linear-gradient(135deg, #a8edea 0%, #fed6e3 100%);
+    --dark-gradient: linear-gradient(135deg, #2c3e50 0%, #3498db 100%);
+    --card-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+    --card-shadow-hover: 0 20px 40px rgba(0, 0, 0, 0.15);
+}
+
+* {
+    box-sizing: border-box;
+}
+
+body {
+    font-family: 'Noto Sans JP', 'Hiragino Kaku Gothic ProN', 'Hiragino Sans', Meiryo, sans-serif;
+    background: linear-gradient(135deg, #f5f7fa 0%, #c3cfe2 100%);
+    min-height: 100vh;
+    margin: 0;
+    padding: 0;
+}
+
+/* ナビゲーションバーのスタイリング */
+.navbar {
+    background: var(--primary-gradient) !important;
+    box-shadow: 0 2px 20px rgba(0, 0, 0, 0.1);
+    border: none;
+    backdrop-filter: blur(10px);
+}
+
+.navbar-brand {
+    font-weight: 700;
+    font-size: 1.4rem;
+    color: #fff !important;
+    text-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
+}
+
+.navbar-nav .nav-link {
+    color: rgba(255, 255, 255, 0.9) !important;
+    font-weight: 500;
+    transition: all 0.3s ease;
+    margin: 0 5px;
+    border-radius: 20px;
+    padding: 8px 16px !important;
+}
+
+.navbar-nav .nav-link:hover,
+.navbar-nav .nav-link.active {
+    color: #fff !important;
+    background: rgba(255, 255, 255, 0.2);
+    transform: translateY(-2px);
+}
+
+/* カードのスタイリング */
+.card {
+    border: none;
+    border-radius: 16px;
+    box-shadow: var(--card-shadow);
+    transition: all 0.3s ease;
+    background: #fff;
+    overflow: hidden;
+    margin-bottom: 20px;
+}
+
+.card:hover {
+    transform: translateY(-5px);
+    box-shadow: var(--card-shadow-hover);
+}
+
+.card-header {
+    border: none;
+    border-radius: 16px 16px 0 0 !important;
+    font-weight: 600;
+    font-size: 1.1rem;
+    padding: 20px;
+}
+
+.card-body {
+    padding: 24px;
+}
+
+.card-title {
+    font-weight: 600;
+    margin-bottom: 12px;
+}
+
+/* 統計カードのグラデーション */
+.bg-primary {
+    background: var(--primary-gradient) !important;
+}
+
+.bg-info {
+    background: var(--info-gradient) !important;
+}
+
+.bg-success {
+    background: var(--success-gradient) !important;
+}
+
+.bg-warning {
+    background: var(--warning-gradient) !important;
+    color: #333 !important;
+}
+
+.bg-danger {
+    background: var(--danger-gradient) !important;
+}
+
+.bg-dark {
+    background: var(--dark-gradient) !important;
+}
+
+/* ボタンのスタイリング */
+.btn {
+    border: none;
+    border-radius: 12px;
+    font-weight: 600;
+    padding: 12px 24px;
+    transition: all 0.3s ease;
+    text-transform: none;
+    font-size: 0.95rem;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+    cursor: pointer;
+    text-decoration: none;
+    display: inline-block;
+    text-align: center;
+}
+
+.btn:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 6px 16px rgba(0, 0, 0, 0.15);
+    text-decoration: none;
+}
+
+.btn-primary {
+    background: var(--primary-gradient);
+    color: #fff;
+}
+
+.btn-primary:hover {
+    color: #fff;
+}
+
+.btn-success {
+    background: var(--success-gradient);
+    color: #fff;
+}
+
+.btn-success:hover {
+    color: #fff;
+}
+
+.btn-info {
+    background: var(--info-gradient);
+    color: #fff;
+}
+
+.btn-info:hover {
+    color: #fff;
+}
+
+.btn-warning {
+    background: var(--warning-gradient);
+    color: #333;
+}
+
+.btn-warning:hover {
+    color: #333;
+}
+
+.btn-danger {
+    background: var(--danger-gradient);
+    color: #fff;
+}
+
+.btn-danger:hover {
+    color: #fff;
+}
+
+.btn-outline-primary {
+    border: 2px solid #667eea;
+    color: #667eea;
+    background: transparent;
+    box-shadow: none;
+}
+
+.btn-outline-primary:hover {
+    background: var(--primary-gradient);
+    color: #fff;
+    border-color: transparent;
+}
+
+.btn-outline-danger {
+    border: 2px solid #fa709a;
+    color: #fa709a;
+    background: transparent;
+    box-shadow: none;
+}
+
+.btn-outline-danger:hover {
+    background: var(--danger-gradient);
+    color: #fff;
+    border-color: transparent;
+}
+
+/* バッジのスタイリング */
+.badge {
+    border-radius: 20px;
+    padding: 8px 16px;
+    font-weight: 600;
+    font-size: 0.8rem;
+    letter-spacing: 0.5px;
+    border: none;
+}
+
+/* リストグループのスタイリング */
+.list-group-item {
+    border: none;
+    border-bottom: 1px solid rgba(0, 0, 0, 0.05);
+    padding: 16px 20px;
+    transition: all 0.3s ease;
+    background: #fff;
+}
+
+.list-group-item:hover {
+    background: rgba(102, 126, 234, 0.05);
+    transform: translateX(5px);
+}
+
+.list-group-item:first-child {
+    border-radius: 0;
+}
+
+.list-group-item:last-child {
+    border-radius: 0;
+    border-bottom: none;
+}
+
+.list-group-flush .list-group-item:first-child {
+    border-top: none;
+}
+
+/* アラートのスタイリング */
+.alert {
+    border: none;
+    border-radius: 12px;
+    padding: 16px 20px;
+    margin-bottom: 24px;
+    font-weight: 500;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+}
+
+.alert-success {
+    background: linear-gradient(135deg, #d4edda 0%, #c3e6cb 100%);
+    color: #155724;
+}
+
+.alert-danger {
+    background: linear-gradient(135deg, #f8d7da 0%, #f1c6cb 100%);
+    color: #721c24;
+}
+
+.alert-warning {
+    background: linear-gradient(135deg, #fff3cd 0%, #ffeaa7 100%);
+    color: #856404;
+}
+
+.alert-info {
+    background: linear-gradient(135deg, #d1ecf1 0%, #bee5eb 100%);
+    color: #0c5460;
+}
+
+/* テキストスタイリング */
+h1, h2, h3, h4, h5, h6 {
+    font-weight: 700;
+    color: #2c3e50;
+    margin-bottom: 16px;
+}
+
+.h3 {
+    color: #2c3e50;
+    font-weight: 700;
+}
+
+/* リンクスタイリング */
+a {
+    color: #667eea;
+    text-decoration: none;
+    transition: all 0.3s ease;
+}
+
+a:hover {
+    color: #764ba2;
+    text-decoration: none;
+}
+
+.text-decoration-none:hover {
+    color: #667eea;
+}
+
+/* カスタムアニメーション */
+@keyframes fadeInUp {
+    from {
+        opacity: 0;
+        transform: translateY(30px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+.fade-in-up {
+    animation: fadeInUp 0.6s ease forwards;
+}
+
+/* モバイル対応 */
+@media (max-width: 768px) {
+    .container-fluid {
+        padding-left: 15px;
+        padding-right: 15px;
+    }
+    
+    .card {
+        margin-bottom: 20px;
+    }
+    
+    .btn {
+        padding: 10px 20px;
+        font-size: 0.9rem;
+    }
+    
+    .navbar-nav .nav-link {
+        margin: 2px 0;
+    }
+}
+
+/* フォームスタイリング */
+.form-control, .form-select {
+    border: 2px solid rgba(102, 126, 234, 0.2);
+    border-radius: 10px;
+    padding: 12px 16px;
+    transition: all 0.3s ease;
+    background: #fff;
+    font-family: inherit;
+}
+
+.form-control:focus, .form-select:focus {
+    border-color: #667eea;
+    box-shadow: 0 0 0 0.2rem rgba(102, 126, 234, 0.25);
+    outline: none;
+}
+
+.form-label {
+    font-weight: 600;
+    color: #2c3e50;
+    margin-bottom: 8px;
+}
+
+/* テーブルスタイリング */
+.table {
+    background: #fff;
+    border-radius: 12px;
+    overflow: hidden;
+    box-shadow: var(--card-shadow);
+    border-collapse: separate;
+    border-spacing: 0;
+}
+
+.table thead th {
+    background: var(--primary-gradient);
+    color: #fff;
+    border: none;
+    font-weight: 600;
+    padding: 16px;
+    text-align: left;
+}
+
+.table tbody tr {
+    transition: all 0.3s ease;
+}
+
+.table tbody tr:hover {
+    background: rgba(102, 126, 234, 0.05);
+}
+
+.table td {
+    padding: 16px;
+    border-color: rgba(0, 0, 0, 0.05);
+    border-top: 1px solid rgba(0, 0, 0, 0.05);
+}
+
+/* ページネーション */
+.pagination .page-link {
+    border: none;
+    color: #667eea;
+    margin: 0 4px;
+    border-radius: 8px;
+    padding: 10px 16px;
+    font-weight: 500;
+    text-decoration: none;
+}
+
+.pagination .page-item.active .page-link {
+    background: var(--primary-gradient);
+    color: #fff;
+}
+
+.pagination .page-link:hover {
+    background: rgba(102, 126, 234, 0.1);
+    color: #667eea;
+}
+
+/* プログレスバー */
+.progress {
+    height: 12px;
+    border-radius: 10px;
+    background: rgba(0, 0, 0, 0.1);
+    overflow: hidden;
+}
+
+.progress-bar {
+    border-radius: 10px;
+    background: var(--primary-gradient);
+}
+
+/* 共通カスタムボタンスタイル */
+.btn-custom {
+    border: none;
+    border-radius: 25px;
+    font-weight: 600;
+    padding: 12px 28px;
+    transition: all 0.4s ease;
+    text-transform: none;
+    font-size: 0.95rem;
+    box-shadow: 0 8px 25px rgba(0, 0, 0, 0.15);
+    cursor: pointer;
+    text-decoration: none;
+    display: inline-block;
+    text-align: center;
+    position: relative;
+    overflow: hidden;
+}
+
+.btn-custom::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: -100%;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.3), transparent);
+    transition: left 0.5s;
+}
+
+.btn-custom:hover::before {
+    left: 100%;
+}
+
+.btn-custom:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 12px 35px rgba(0, 0, 0, 0.2);
+    text-decoration: none;
+}
+
+.btn-custom-primary {
+    background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+    color: #fff;
+}
+
+.btn-custom-primary:hover {
+    background: linear-gradient(135deg, #5a6fd8 0%, #6a4190 100%);
+    color: #fff;
+}
+
+.btn-custom-secondary {
+    background: linear-gradient(135deg, #a8b2d1 0%, #c8d0e6 100%);
+    color: #4a5568;
+}
+
+.btn-custom-secondary:hover {
+    background: linear-gradient(135deg, #9ca6c4 0%, #bcc5da 100%);
+    color: #4a5568;
+}
+
+.btn-custom-success {
+    background: linear-gradient(135deg, #4facfe 0%, #00f2fe 100%);
+    color: #fff;
+}
+
+.btn-custom-success:hover {
+    background: linear-gradient(135deg, #3d8bfe 0%, #00d9fe 100%);
+    color: #fff;
+}
+
+.btn-custom-warning {
+    background: linear-gradient(135deg, #43e97b 0%, #38f9d7 100%);
+    color: #2d3748;
+}
+
+.btn-custom-warning:hover {
+    background: linear-gradient(135deg, #2dd865 0%, #22e6c1 100%);
+    color: #2d3748;
+}
+
+.btn-custom-danger {
+    background: linear-gradient(135deg, #fa709a 0%, #fee140 100%);
+    color: #fff;
+}
+
+.btn-custom-danger:hover {
+    background: linear-gradient(135deg, #f85b88 0%, #fed932 100%);
+    color: #fff;
+}
+
+/* ページヘッダースタイル */
+.page-header {
+    margin-bottom: 2rem;
+}
+
+.page-title {
+    background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+    font-size: 2.5rem;
+    font-weight: 700;
+    margin: 0;
+    display: flex;
+    align-items: center;
+}
+
+.page-subtitle {
+    color: #718096;
+    font-size: 1.1rem;
+    font-weight: 400;
+    margin: 0.5rem 0 0 0;
+}
+
+/* 統計カードの強化 */
+.stats-card {
+    border-radius: 20px;
+    border: none;
+    box-shadow: 0 8px 25px rgba(0, 0, 0, 0.1);
+    transition: all 0.4s ease;
+    overflow: hidden;
+    height: 100%;
+    background: linear-gradient(135deg, #fff 0%, #f8f9fc 100%);
+}
+
+.stats-card:hover {
+    transform: translateY(-8px) scale(1.02);
+    box-shadow: 0 15px 35px rgba(0, 0, 0, 0.15);
+}
+
+.stats-icon {
+    font-size: 2.5rem;
+    background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+}
+
+.stats-number {
+    font-size: 2.5rem;
+    font-weight: 800;
+    margin: 0.5rem 0;
+    background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+}
+
+.stats-label {
+    color: #718096;
+    font-size: 0.95rem;
+    font-weight: 500;
+    margin: 0;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+}
+
+/* ユーティリティクラス */
+.text-primary {
+    color: #667eea !important;
+}
+
+.text-muted {
+    color: #6c757d !important;
+}
+
+.small {
+    font-size: 0.875em;
+}
+
+.opacity-50 {
+    opacity: 0.5;
+}
+
+/* 追加のアニメーション効果 */
+@keyframes slideInRight {
+    from {
+        opacity: 0;
+        transform: translateX(30px);
+    }
+    to {
+        opacity: 1;
+        transform: translateX(0);
+    }
+}
+
+@keyframes slideInLeft {
+    from {
+        opacity: 0;
+        transform: translateX(-30px);
+    }
+    to {
+        opacity: 1;
+        transform: translateX(0);
+    }
+}
+
+@keyframes zoomIn {
+    from {
+        opacity: 0;
+        transform: scale(0.8);
+    }
+    to {
+        opacity: 1;
+        transform: scale(1);
+    }
+}
+
+.slide-in-right {
+    animation: slideInRight 0.6s ease forwards;
+}
+
+.slide-in-left {
+    animation: slideInLeft 0.6s ease forwards;
+}
+
+.zoom-in {
+    animation: zoomIn 0.5s ease forwards;
+}
+
+/* フィルターとフォームの統一スタイル */
+.form-floating > .form-control,
+.form-floating > .form-select {
+    height: calc(3.5rem + 2px);
+    line-height: 1.25;
+    padding: 1rem 0.75rem;
+}
+
+.form-floating > label {
+    padding: 1rem 0.75rem;
+}
+
+/* 改善されたスクロールバー */
+::-webkit-scrollbar {
+    width: 8px;
+    height: 8px;
+}
+
+::-webkit-scrollbar-track {
+    background: #f1f1f1;
+    border-radius: 10px;
+}
+
+::-webkit-scrollbar-thumb {
+    background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+    border-radius: 10px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+    background: linear-gradient(135deg, #5a6fd8 0%, #6a4190 100%);
+}
+
+/* ダークテーマ対応（オプション） */
+@media (prefers-color-scheme: dark) {
+    body {
+        background: linear-gradient(135deg, #1a1a1a 0%, #2d3748 100%);
+    }
+    
+    .card {
+        background: #2d3748;
+        color: #fff;
+    }
+    
+    .text-muted {
+        color: #a0aec0 !important;
+    }
+    
+    h1, h2, h3, h4, h5, h6 {
+        color: #fff;
+    }
+}
