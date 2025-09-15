@@ -417,10 +417,14 @@
                                         <option value="">担当者未割当</option>
                                         @foreach($members as $member)
                                             <option value="{{ $member->id }}" 
-                                                    data-team-id="{{ $member->team_id }}"
                                                     data-slack="{{ $member->slack_user_id ? 'true' : 'false' }}"
                                                     @if(old('assigned_member_id', request('assignee_id')) == $member->id) selected @endif>
-                                                {{ $member->name }} ({{ $member->team->name }})
+                                                {{ $member->name }}
+                                                @if($member->teams->isNotEmpty())
+                                                    ({{ $member->teams->pluck('name')->join(', ') }})
+                                                @else
+                                                    (チーム未所属)
+                                                @endif
                                             </option>
                                         @endforeach
                                     </select>
@@ -653,7 +657,7 @@ document.addEventListener('DOMContentLoaded', function() {
         @foreach($members as $member)
             '{{ $member->id }}': { 
                 name: '{{ $member->name }}',
-                team_id: '{{ $member->team_id }}',
+                teams: [@foreach($member->teams as $team)'{{ $team->name }}'@if(!$loop->last),@endif @endforeach],
                 slack: {{ $member->slack_user_id ? 'true' : 'false' }}
             },
         @endforeach

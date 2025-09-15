@@ -49,7 +49,9 @@ class TaskController extends Controller
         // フィルター用のデータ
         $events = Event::active()->get();
         $teams = Team::active()->get();
-        $members = Member::active()->get();
+        $members = Member::active()->with(['teams' => function($query) {
+            $query->where('member_team.is_active', true);
+        }])->get();
         $statuses = ProgressStatus::active()->get();
 
         return view('tasks.index', compact('tasks', 'events', 'teams', 'members', 'statuses'));
@@ -78,7 +80,9 @@ class TaskController extends Controller
     {
         $events = Event::active()->get();
         $teams = Team::active()->get();
-        $members = Member::active()->get();
+        $members = Member::active()->with(['teams' => function($query) {
+            $query->where('member_team.is_active', true);
+        }])->get();
         $statuses = ProgressStatus::active()->get();
 
         // URLパラメータからデフォルト値を設定
@@ -127,7 +131,9 @@ class TaskController extends Controller
     {
         $events = Event::active()->get();
         $teams = Team::active()->get();
-        $members = Member::active()->get();
+        $members = Member::active()->with(['teams' => function($query) {
+            $query->where('member_team.is_active', true);
+        }])->get();
         $statuses = ProgressStatus::where('event_id', $task->event_id)->active()->get();
 
         return view('tasks.edit', compact('task', 'events', 'teams', 'members', 'statuses'));

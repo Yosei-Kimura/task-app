@@ -75,11 +75,29 @@
 }
 
 .event-header {
-    background: linear-gradient(135deg, var(--event-color, #667eea) 0%, var(--event-color-dark, #764ba2) 100%);
+    background: linear-gradient(135deg, var(--event-color, #667eea) 0%, #764ba2 100%);
     color: white;
     border-radius: 20px 20px 0 0;
     padding: 30px;
     box-shadow: 0 8px 25px rgba(0, 0, 0, 0.15);
+    position: relative;
+}
+
+.event-header > * {
+    position: relative;
+    z-index: 2;
+}
+
+.event-header::after {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: linear-gradient(135deg, transparent 0%, rgba(0,0,0,0.15) 100%);
+    border-radius: 20px 20px 0 0;
+    z-index: 1;
 }
 
 .status-grid {
@@ -307,7 +325,8 @@
             <div class="event-section" data-event-id="{{ $event->id }}">
                 <div class="card border-0">
                     <div class="event-header" 
-                         style="--event-color: {{ $event->color }}; --event-color-dark: {{ $this->darkenColor($event->color ?? '#667eea', 20) }}">
+                         style="--event-color: {{ $event->color ?? '#667eea' }};"
+                         data-event-color="{{ $event->color ?? '#667eea' }}">>>
                         <div class="d-flex justify-content-between align-items-center">
                             <div>
                                 <h3 class="mb-2 fw-bold">
@@ -513,23 +532,7 @@
     </div>
 </div>
 @endsection
-                    </h5>
-                    <h3>{{ $allStatuses->sum(function($status) { return $status->tasks->count(); }) }}</h3>
-                    <p class="card-text">使用中タスク数</p>
-                </div>
-            </div>
-        </div>
-        <div class="col-md-3">
-            <div class="card text-center">
-                <div class="card-body">
-                    <h5 class="card-title text-warning">
-                        <i class="fas fa-chart-line fa-2x"></i>
-                    </h5>
-                    <h3>{{ number_format($allStatuses->avg(function($status) { return $status->tasks->count(); }), 1) }}</h3>
-                    <p class="card-text">平均使用数</p>
-                </div>
-            </div>
-        </div>
+
 @push('scripts')
 <script src="https://cdn.jsdelivr.net/npm/sortablejs@latest/Sortable.min.js"></script>
 <script>
@@ -733,8 +736,19 @@ presetStyle.textContent = `
 }
 `;
 document.head.appendChild(presetStyle);
-</script>
-@endpush
+
+// 順序更新機能（重複削除）
+function updateOrder(statusId, newOrder) {
+    fetch(`/progress-statuses/${statusId}/update-order`, {
+        method: 'PATCH',
+        headers: {
+            'Content-Type': 'application/json',
+            'X-CSRF-TOKEN': document.querySelector('meta[name="csrf-token"]').getAttribute('content')
+        },
+        body: JSON.stringify({
+            order: newOrder
+        })
+    })
     .then(response => response.json())
     .then(data => {
         if (data.success) {
@@ -774,4 +788,4 @@ function createDefaultStatuses() {
     });
 }
 </script>
-@endsection
+@endpush

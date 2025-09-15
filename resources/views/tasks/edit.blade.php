@@ -110,9 +110,13 @@
                                     <option value="">担当者を選択してください（任意）</option>
                                     @foreach($members as $member)
                                         <option value="{{ $member->id }}" 
-                                                data-team-id="{{ $member->team_id }}"
                                                 @if(old('assigned_member_id', $task->assigned_member_id) == $member->id) selected @endif>
-                                            {{ $member->name }} ({{ $member->team->name }})
+                                            {{ $member->name }}
+                                            @if($member->teams->isNotEmpty())
+                                                ({{ $member->teams->pluck('name')->join(', ') }})
+                                            @else
+                                                (チーム未所属)
+                                            @endif
                                             @if($member->hasSlackAccount())
                                                 <i class="fab fa-slack"></i>
                                             @endif
